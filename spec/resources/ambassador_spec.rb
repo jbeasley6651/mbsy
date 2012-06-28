@@ -4,11 +4,11 @@ require 'ruby-debug'
 describe Mbsy::Ambassador do
   
   let(:resource_prefix) { "#{fake_domain}/ambassadors" }
-  let(:existing_ambassador) { Mbsy::Ambassador.find(email: 'ambassador@mbsy.co', first_name: 'sigma') }
+  let(:existing_ambassador) { Mbsy::Ambassador.find(email: 'ambassador@mbsy.co', first_name: 'test') }
 
   context 'find existing ambassador' do
     before do
-      FakeWeb.register_uri(:get, "#{resource_prefix}/get/", :query => existing_ambassador.attributes)
+      FakeWeb.register_uri(:get, "#{resource_prefix}/get/", :body => existing_ambassador.attributes)
     end
     
     it 'is an instance of Mbsy::Ambassador' do

@@ -9,6 +9,8 @@ module Mbsy
         call('add', params)
       when :deduct
         call('deduct', params)
+      else
+        raise ArgumentError, "You must include a mode of either :add or :deduct"
       end
     end
     
